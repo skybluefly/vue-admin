@@ -37,30 +37,6 @@ export const constantRouterMap = [
     }]
   },
 
-  {
-    path: '/suning',
-    component: Layout,
-    redirect: '/suning/account',
-    name: 'Suning',
-    meta: { title: '苏宁', icon: 'icon-v-suning' },
-    children: [
-      {
-        path: 'account',
-        name: 'suningAccount',
-        component: () => import('@/views/suning-account/index'),
-        meta: { title: '苏宁账号', icon: 'icon-v-account' }
-      },
-      {
-        path: 'order',
-        name: 'suningOder',
-        component: () => import('@/views/suning-order/index'),
-        meta: { title: '苏宁订单', icon: 'icon-v-order' },
-      },
-
-
-    ]
-  },
-
   { path: '*', redirect: '/404', hidden: true }
 ]
 

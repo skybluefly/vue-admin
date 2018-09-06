@@ -12,7 +12,7 @@ import router from './router'
 import store from './store'
 
 import '@/permission'/* permission control*/
-import '@/utils/filter'
+import '@/icons' // icon
 
 Vue.use(ElementUI)
 

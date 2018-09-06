@@ -10,14 +10,6 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api': {  //代理地址
-        target: 'http://www.dengchelai.cn:8123',
-        changeOrigin: true,
-        secure: false,
-        pathRewrite: {
-          '^/api': ''
-        }
-      },
     },
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

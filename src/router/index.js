@@ -7,7 +7,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 /* Layout */
-import Layout from '../views/layout/Layout'
+//import Layout from '../views/layout/Layout'
 
 /**
 * hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
@@ -27,12 +27,13 @@ export const constantRouterMap = [
 
   {
     path: '/',
-    component: Layout,
-    redirect: '/dashboard',
+    component:() => import('../views/layout/Layout'),
+    redirect: '/home',
     name: 'Dashboard',
     hidden: true,
     children: [{
-      path: 'dashboard',
+      path: '/home',
+      name:'home',
       component: () => import('@/views/dashboard/index')
     }]
   },
@@ -50,7 +51,7 @@ export default new Router({
 export const asyncRouterMap = [
   {
     path: '/permission',
-    component:Layout,
+    component:() => import('../views/layout/Layout'),
     redirect: '/permission/index',
     name: 'permission',
     meta: {
@@ -63,9 +64,8 @@ export const asyncRouterMap = [
         path: 'index',
         name: 'permissionIndex',
         component: () => import('@/views/permission/index'),
-        meta: { title: '权限页面测试', icon: 'table' },
+        meta: { title: '权限页面测试', icon: 'table' }
       }
     ]
 
-  }
-  ]
+  }]

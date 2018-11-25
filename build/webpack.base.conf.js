@@ -41,7 +41,7 @@ module.exports = {
   },
   module: {
     rules: [
-      // ...(config.dev.useEslint ? [createLintingRule()] : []),
+      ...(config.dev.useEslint ? [] : []),
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -88,7 +88,9 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      }
+      },
+
+
     ]
   },
   plugins: [new VueLoaderPlugin()],

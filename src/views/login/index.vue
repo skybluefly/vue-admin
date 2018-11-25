@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
-      <h3 class="title">方寸世界，游刃有余</h3>
+      <h3 class="title">vue-element-admin</h3>
       <el-form-item prop="username">
         <span class="svg-container svg-container_login">
           <svg-icon icon-class="user" />
@@ -25,9 +25,13 @@
       </el-form-item>
       <el-form-item>
         <el-button :loading="loading" type="primary" style="width:100%;" @click.native.prevent="handleLogin">
-          登录
+          Sign in
         </el-button>
-      </el-form-item>
+      </el-form-item>\
+      <div class="tips">
+        <span style="margin-right:20px;">username: admin</span>
+        <span> password: admin</span>
+      </div>
     </el-form>
   </div>
 </template>
@@ -39,8 +43,8 @@ export default {
   name: 'Login',
   data() {
     const validateUsername = (rule, value, callback) => {
-      if (value=='') {
-        callback(new Error('不能为空！'))
+      if (!isvalidUsername(value)) {
+        callback(new Error('请输入正确的用户名'))
       } else {
         callback()
       }
@@ -54,8 +58,8 @@ export default {
     }
     return {
       loginForm: {
-        username: 'cjpickup',
-        password: '3ghlmcl'
+        username: 'admin',
+        password: 'admin'
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -79,7 +83,7 @@ export default {
           this.loading = true
           this.$store.dispatch('Login', this.loginForm).then(() => {
             this.loading = false
-            this.$router.push({ path: '/suning' })
+            this.$router.push({ path: '/' })
           }).catch(() => {
             this.loading = false
           })
